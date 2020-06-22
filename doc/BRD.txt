@@ -24,16 +24,30 @@ freestyle 选项
 
 
 [
-    {"name": "水煮肉", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "可乐鸡翅", "type": "meat", "needOther": true, "wish": 100, "wait": 10 },
-    {"name": "西红柿炒蛋", "type": "veggie", "needOther": true, "wish": 100, "wait": 10 },
-    {"name": "炸酱面", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "意大利面", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "疙瘩汤", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "酸汤肥牛", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "牛排", "type": "meat", "needOther": true, "wish": 100, "wait": 10 },
-    {"name": "小火锅", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "酸菜炖羊肉", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "蘑菇炒肉", "type": "meat", "needOther": false, "wish": 100, "wait": 10 },
-    {"name": "咖喱", "type": "meat", "needOther": false}
+
+    {"name": "咖喱牛", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["咖喱", "牛肉", "白萝卜", "胡萝卜", "洋葱"], "notSameDay":[], "notSameWeek": ["咖喱鸡", "素咖喱"] }, 
+    {"name": "咖喱鸡", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["咖喱", "鸡肉", "白萝卜", "胡萝卜", "洋葱"], "notSameDay":[], "notSameWeek": ["咖喱牛", "素咖喱"] }, 
+    {"name": "素咖喱", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["咖喱", "白萝卜", "胡萝卜", "洋葱", "土豆"], "notSameDay":[], "notSameWeek": ["咖喱牛", "咖喱鸡"] }, 
+    {"name": "红烧牛尾", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["牛尾", "西红柿", "洋葱"], "notSameDay":[], "notSameWeek": [] }, 
+    {"name": "可乐鸡翅", "type": "meat", "effort": 50, "wish": 100, "wait": 10, "ingredients": ["可乐", "鸡翅"], "notSameDay":[], "notSameWeek": [] }, 
+    {"name": "照烧鸡", "type": "meat", "effort": 50, "wish": 100, "wait": 10, "ingredients": ["鸡肉"], "notSameDay":[], "notSameWeek": [] }, 
+    {"name": "蘑菇炒牛肉", "type": "meat", "effort": 50, "wish": 100, "wait": 10, "ingredients": ["蘑菇", "牛肉"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "炖排骨", "type": "meat", "effort": 90, "wish": 100, "wait": 10, "ingredients": ["排骨", "玉米", "山药", "胡萝卜"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "酸汤肥牛", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["西红柿", "牛肉片", "金针菇"], "notSameDay":[], "notSameWeek": [] }, 
+    {"name": "水煮肉片", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["猪肉", "高汤", "白菜"], "notSameDay":[], "notSameWeek": [] }, 
+
+    {"name": "白菜炖豆腐", "type": "veggie", "effort": 50, "wish": 100, "wait": 10, "ingredients": ["白菜", "豆腐"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "豆豉鲮鱼油麦菜", "type": "veggie", "effort": 20, "wish": 100, "wait": 10, "ingredients": ["豆豉鲮鱼", "油麦菜"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "蒜香豆苗", "type": "veggie", "effort": 20, "wish": 100, "wait": 10, "ingredients": ["豆苗"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "西红柿炒蛋", "type": "veggie", "effort": 20, "wish": 100, "wait": 10, "ingredients": ["西红柿", "鸡蛋"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "土豆丝", "type": "veggie", "effort": 20, "wish": 100, "wait": 10, "ingredients": ["土豆"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "蚝油生菜", "type": "veggie", "effort": 20, "wish": 100, "wait": 10, "ingredients": ["生菜"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "黄瓜炒鸡蛋", "type": "veggie", "effort": 20, "wish": 100, "wait": 10, "ingredients": ["黄瓜", "鸡蛋"], "notSameDay":[], "notSameWeek": [] },
+    
+    {"name": "麻辣香锅", "type": "veggie", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["香锅料", "蔬菜"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "小火锅", "type": "veggie", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["火锅料", "蔬菜", "肉"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "炸酱面", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["宽面", "肉末"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "意大利面", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["意大利面"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "西红柿鸡蛋打卤面", "type": "meat", "effort": 100, "wish": 100, "wait": 10, "ingredients": ["宽面", "西红柿", "鸡蛋"], "notSameDay":[], "notSameWeek": [] },
+    {"name": "疙瘩汤", "type": "meat", "effort": 50, "wish": 100, "wait": 10, "ingredients": ["面粉", "西红柿"], "notSameDay":[], "notSameWeek": [] }
 ]

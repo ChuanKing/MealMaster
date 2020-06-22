@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { getIngredient } = require("./ingredient");
+const { getIngredient } = require('./ingredient');
 
 const batchSize = 3;
 const wishWeight = 0.7;
