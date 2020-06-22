@@ -1,54 +1,60 @@
-const { getRandomInt } = require('./util');
-const { calculateUseLeftIngredient } = require("./ingredient");
+const _ = require('lodash');
+const { getIngredient } = require("./ingredient");
 
-const retry = 5;
+const batchSize = 3;
+const wishWeight = 0.7;
+const ingredientWeight = 0.3;
 
-exports.pickupXDishesSaveMode = (dishes, x) => {
+exports.shuffleDish = (dishes) => {
 
-    let finalSelectedDished = [];
-    let finalUsedLeftIngredients = 0;
+    const shuffledDish = [];
 
-    for (var i = 0; i < retry; i++) {
-        const selectedDished = exports.pickupXDishes(dishes, x);
-        const usedLeftIngredients = calculateUseLeftIngredient(selectedDished);
+    while (dishes.length > 0) {
+        dishes = _.shuffle(dishes);
 
-        if (usedLeftIngredients.length >= finalUsedLeftIngredients) {
-            finalSelectedDished = selectedDished;
-            finalUsedLeftIngredients = usedLeftIngredients.length;
-        }
+        const best = getBest(dishes.slice(0, batchSize));
+        _.remove(dishes, d => d == best);
+        shuffledDish.push(best);
     }
 
-    console.log(`使用了 ${finalUsedLeftIngredients} 之前的食材`);
-    return finalSelectedDished;
+    return shuffledDish
 }
 
-exports.pickupXDishes = (dishes, x) => {
+function getBest(candidates) {
 
-    dishes = [...dishes];
-    const selectedDishes = [];
+    let best = candidates[0];
+    let bestScore = calculateScore(best);
 
-    while(x > 0 && dishes.length > 0) {
-        const selectedDish = exports.pickupDish(dishes);
-        selectedDishes.push(selectedDish);
-        x--;
-    }
+    candidates.forEach(candidate => {
+        const currentScore = calculateScore(candidate)
 
-    return selectedDishes;
+        if (bestScore < currentScore) {
+            best = candidate;
+            bestScore = currentScore;
+        }
+    });
+
+    return best;
 }
 
-exports.pickupDish = (dishes) => {
-    const totalWeight = dishes.reduce((total, dishes) => total + dishes.wish, 0);
-    const random = getRandomInt(totalWeight);
+function calculateScore(dish) {
 
-    let i = 0, sum = 0;
+    const wishScore = dish.wish;
+    const ingredientsScore = calculateIngredientsScore(dish.ingredients);
 
-    for (; i < dishes.length; i++) {
-        var wish = dishes[i].wish;
-        if (random >= sum && random < sum + wish) {
-            break;
+    return wishScore * wishWeight + ingredientsScore * ingredientWeight;
+}
+
+function calculateIngredientsScore(ingredients) {
+
+    let score = 0;
+    const ingredientInStore = getIngredient();
+
+    ingredients.forEach(ingredient => {
+        if (ingredientInStore[ingredient]) {
+            score++;
         }
-        sum += wish;
-    }
+    });
 
-    return dishes.splice(i, 1)[0];
+    return score;
 }
